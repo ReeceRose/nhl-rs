@@ -18,7 +18,7 @@ By default, the SDK will use the well documented API from [dword4](https://gitla
 2. Import the NHL-RS Client `use nhl_rs::Client;`
 3. Create a new client: `let mut client = Client::new();`
 4. Query the NHL API:
-```bash
+```rust
 let response = client.confrences.get_by_id(1).send().await;
 let response = response.unwrap();
 ```
@@ -32,8 +32,8 @@ use nhl_rs::Client;
 async fn main() {
     let mut client = Client::new();
 
-    let response = client.confrences.get_by_id(1).send().await; # Query the NHL API for the confrence with the ID of 1.
-    let response = response.unwrap(); # Unwrap the result, ignoring any errors.
+    let response = client.confrences.get_by_id(1).send().await; // Query the NHL API for the confrence with the ID of 1.
+    let response = response.unwrap(); // Unwrap the result, ignoring any errors.
 
     println!("Confrence with the ID of 1");
     println!("{:?}", response.conferences[0].name);
