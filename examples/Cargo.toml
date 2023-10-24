@@ -1,0 +1,24 @@
+[package]
+name = "nhl-rs-examples"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+nhl-rs = { path = "../" }
+tokio = { version = "1.33.0", features = ["full"] }
+
+[[bin]]
+name = "awards"
+path = "src/awards.rs"
+
+[[example]]
+name = "awards"
+path = "src/awards.rs"
+
+[[bin]]
+name = "conferences"
+path = "src/conferences.rs"
+
+[[example]]
+name = "conferences"
+path = "src/conferences.rs"
