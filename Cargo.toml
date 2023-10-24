@@ -12,3 +12,12 @@ repository = "https://github.com/ReeceRose/nhl-rs"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
+reqwest = { version = "0.11.22", features = ["json"] }
+serde = { version = "1.0.189", features = ["derive"] }
+
+[features]
+default = ["nhl"]
+# The "old" NHL API 
+nhl = []
+# The new NHL API https://gitlab.com/dword4/nhlapi/-/blob/master/new-api.md?ref_type=heads
+nhle = []
