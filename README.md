@@ -1,16 +1,11 @@
 # NHL-RS
 
-The unofficial NHL Rust SDK.
+The unofficial NHL Rust SDK for the new Edge API.
 
 ## Supported Endpoints
-- Awards
-- Conferences
+- 
 
 More coming soon!
-
-## Features
-
-By default, the SDK will use the well documented API from [dword4](https://gitlab.com/dword4/nhlapi). Behind the `nhle` feature flag, you can utilize the new NHL API documented [here](https://gitlab.com/dword4/nhlapi/-/blob/master/new-api.md?ref_type=heads).
 
 ## How to Use
 
@@ -19,8 +14,7 @@ By default, the SDK will use the well documented API from [dword4](https://gitla
 3. Create a new client: `let mut client = Client::new();`
 4. Query the NHL API:
 ```rust
-let response = client.confrences.get_by_id(1).send().await;
-let response = response.unwrap();
+// let response = client.confrences.get_by_id(1).send().await?;
 ```
 
 Full example:
@@ -32,8 +26,7 @@ use nhl_rs::Client;
 async fn main() {
     let mut client = Client::new();
 
-    let response = client.confrences.get_by_id(1).send().await; // Query the NHL API for the confrence with the ID of 1.
-    let response = response.unwrap(); // Unwrap the result, ignoring any errors.
+    let response = client.confrences.get_by_id(1).send().await?; // Query the NHL API for the confrence with the ID of 1.
 
     println!("Confrence with the ID of 1");
     println!("{:?}", response.conferences[0].name);
@@ -45,7 +38,7 @@ async fn main() {
 The examples folder is full of examples for all the currently [supported endpoints](#Supported-Endpoints). To run the conferences example, execute:
 ```bash
 cd examples
-cargo run --example conferences
+# cargo run --example conferences
 ```
 
 ## Errors

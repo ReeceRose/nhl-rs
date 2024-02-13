@@ -13,6 +13,6 @@ async fn main() {
 
     let response = client.awards.all().send().await;
     let response = response.unwrap();
-
+    // response
     println!("The NHL has {} total awards", response.awards.len());
 }
