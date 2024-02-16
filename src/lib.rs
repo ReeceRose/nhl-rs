@@ -1,20 +1,6 @@
-pub mod awards;
-pub mod conferences;
+pub use client::Client;
+pub use client::ClientBuilder;
+
+mod client;
+mod franchise;
 pub(crate) mod http;
-
-use awards::AwardsClient;
-use conferences::ConferencesClient;
-
-pub struct Client {
-    pub awards: AwardsClient,
-    pub confrences: ConferencesClient,
-}
-
-impl Client {
-    pub fn new() -> Self {
-        Client {
-            awards: AwardsClient::new(),
-            confrences: ConferencesClient::new(),
-        }
-    }
-}

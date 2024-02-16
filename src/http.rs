@@ -16,9 +16,8 @@ where
         Err(e) => {
             if e.is_status() {
                 return Err(e.status().unwrap().as_u16());
-            } else {
-                return Err(StatusCode::BAD_REQUEST.as_u16());
             }
+            return Err(StatusCode::BAD_REQUEST.as_u16());
         }
     }
 

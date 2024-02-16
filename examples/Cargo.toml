@@ -8,17 +8,9 @@ nhl-rs = { path = "../" }
 tokio = { version = "1.33.0", features = ["full"] }
 
 [[bin]]
-name = "awards"
-path = "src/awards.rs"
+name = "franchises"
+path = "src/franchises.rs"
 
 [[example]]
-name = "awards"
-path = "src/awards.rs"
-
-[[bin]]
-name = "conferences"
-path = "src/conferences.rs"
-
-[[example]]
-name = "conferences"
-path = "src/conferences.rs"
+name = "franchises"
+path = "src/franchises.rs"
