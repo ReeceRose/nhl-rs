@@ -15,7 +15,7 @@ async fn main() -> Result<(), u16> {
     println!("Franchise with the ID of 1");
     println!("{:?}", response.data[0].full_name);
 
-    println!("The NHL has {} total confrences", response.data.len());
+    println!("The NHL has {} total confrences", response.total);
 
     Ok(())
 }

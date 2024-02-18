@@ -29,7 +29,7 @@ impl ClientBuilder {
     ///
     /// # Example
     /// ```rust
-    /// use roboat::ClientBuilder;
+    /// use nhl_rs::ClientBuilder;
     ///
     /// let client = ClientBuilder::new().build();
     /// ```
@@ -45,7 +45,7 @@ impl ClientBuilder {
 
 /// A client used for making requests to the NHL API.
 ///
-/// The client stores the language code, the URLs, and an HTTPS client to send web requests.
+/// The client stores the language code and the URLs needed to send web requests.
 ///
 /// Constructed using a [`ClientBuilder`].
 ///

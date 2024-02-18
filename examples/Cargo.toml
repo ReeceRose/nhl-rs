@@ -14,3 +14,11 @@ path = "src/franchises.rs"
 [[example]]
 name = "franchises"
 path = "src/franchises.rs"
+
+[[bin]]
+name = "glossary"
+path = "src/glossary.rs"
+
+[[example]]
+name = "glossary"
+path = "src/glossary.rs"

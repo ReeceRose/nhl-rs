@@ -26,8 +26,6 @@ impl Client {
     /// # Example
     /// ```no_run
     /// use nhl_rs::ClientBuilder;
-    /// use roboat::trades::TradeType;
-    /// use roboat::Limit;
     ///
     /// const LANGUAGE_CODE: &str = "en";
     ///
@@ -40,7 +38,7 @@ impl Client {
     /// println!("Franchise with the ID of 1");
     /// println!("{:?}", response.data[0].full_name);
     ///
-    /// println!("The NHL has {} total confrences", response.data.len());
+    /// println!("The NHL has {} total confrences", response.total);
     ///
     /// Ok(())
     /// # }
