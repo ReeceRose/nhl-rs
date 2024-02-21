@@ -1,12 +1,10 @@
-use crate::Client;
-
-use crate::http::get;
+use crate::{http::get, Client};
 
 use serde::{Deserialize, Serialize};
 
 #[derive(Default, Debug, Clone, PartialEq, Serialize, Deserialize)]
 #[serde(rename_all = "camelCase")]
-pub struct GetGlossaryResponse {
+pub struct GlossaryResponse {
     pub data: Vec<GlossaryItem>,
     pub total: i64,
 }
@@ -15,7 +13,7 @@ pub struct GetGlossaryResponse {
 #[serde(rename_all = "camelCase")]
 pub struct GlossaryItem {
     pub id: i64,
-    pub abbreviation: String,
+    pub abbreviation: Option<String>,
     pub definition: String,
     pub first_season_for_stat: Option<i64>,
     pub full_name: String,
@@ -30,8 +28,6 @@ impl Client {
     /// ```no_run
     /// use nhl_rs::ClientBuilder;
     ///
-    /// const LANGUAGE_CODE: &str = "en";
-    ///
     /// # #[tokio::main]
     /// # async fn main() -> Result<(), u16> {
     /// let client = ClientBuilder::new().build();
@@ -43,8 +39,9 @@ impl Client {
     /// Ok(())
     /// # }
     /// ```
-    pub async fn get_glossary(&self) -> Result<GetGlossaryResponse, u16> {
+    pub async fn get_glossary(&self) -> Result<GlossaryResponse, u16> {
         let url = format!("{}/{}/glossary", self.stats_base_url, self.language);
-        get::<GetGlossaryResponse>(url).await
+        println!("{}", url);
+        get::<GlossaryResponse>(url).await
     }
 }
