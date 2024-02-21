@@ -12,10 +12,19 @@ async fn main() -> Result<(), u16> {
 
     println!("Request took {}ms", now.elapsed().as_millis());
 
-    println!("Franchise with the ID of 1");
-    println!("{:?}", response.data[0].full_name);
+    println!("The NHL has {} total confrences", response.len());
 
-    println!("The NHL has {} total confrences", response.total);
+    let response = client.get_franchise_by_id(1).await?.unwrap();
+    println!("Franchise with the ID of 1: {:?}", response);
+
+    let response = client
+        .get_franchise_by_place_name("Hamilton")
+        .await?
+        .unwrap();
+    println!(
+        "Franchise with the place name of 'Hamilton': {:?}",
+        response
+    );
 
     Ok(())
 }
