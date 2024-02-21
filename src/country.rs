@@ -42,7 +42,7 @@ impl Client {
     ///
     /// let response = client.get_countries().await?;
     ///
-    /// println!("Got {:?} associated countries", response.total);
+    /// println!("Got {:?} associated countries", response.len());
     ///
     /// Ok(())
     /// # }

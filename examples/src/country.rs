@@ -12,7 +12,7 @@ async fn main() -> Result<(), u16> {
 
     println!("Request took {}ms", now.elapsed().as_millis());
 
-    println!("Got {:?} associated countries", response.total);
+    println!("Got {:?} associated countries", response.len());
 
     let canada = client.get_country_by_id("CAN").await?.unwrap();
 
