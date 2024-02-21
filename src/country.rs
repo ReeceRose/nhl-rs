@@ -47,9 +47,13 @@ impl Client {
     /// Ok(())
     /// # }
     /// ```
-    pub async fn get_countries(&self) -> Result<CountriesResponse, u16> {
+    pub async fn get_countries(&self) -> Result<Vec<Country>, u16> {
         let url = format!("{}/{}/country", self.stats_base_url, self.language);
-        get::<CountriesResponse>(url).await
+        let result = get::<CountriesResponse>(url).await;
+        match result {
+            Ok(response) => Ok(response.data),
+            Err(status_code) => Err(status_code),
+        }
     }
 
     /// Retrieves a country by a given `country_name`.
