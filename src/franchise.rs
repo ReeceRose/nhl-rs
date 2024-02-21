@@ -64,10 +64,8 @@ impl Client {
     /// # }
     /// ```
     pub async fn get_franchise_by_id(&self, franchise_id: i64) -> Result<Option<Franchise>, u16> {
-        let url = format!("{}/{}/franchise", self.stats_base_url, self.language);
-        let result = get::<FranchiseResponse>(url).await?;
+        let result = self.get_franchises().await?;
         Ok(result
-            .data
             .into_iter()
             .filter(|franchise| franchise.id == franchise_id)
             .collect::<Vec<_>>()
@@ -95,11 +93,9 @@ impl Client {
         &self,
         franchise_name: &str,
     ) -> Result<Option<Franchise>, u16> {
-        let url = format!("{}/{}/franchise", self.stats_base_url, self.language);
-        let result = get::<FranchiseResponse>(url).await?;
+        let result = self.get_franchises().await?;
         let name = franchise_name.to_uppercase();
         Ok(result
-            .data
             .into_iter()
             .filter(|franchise| franchise.full_name.to_uppercase() == name)
             .collect::<Vec<_>>()
@@ -127,11 +123,9 @@ impl Client {
         &self,
         team_common_name: &str,
     ) -> Result<Option<Franchise>, u16> {
-        let url = format!("{}/{}/franchise", self.stats_base_url, self.language);
-        let result = get::<FranchiseResponse>(url).await?;
+        let result = self.get_franchises().await?;
         let name = team_common_name.to_uppercase();
         Ok(result
-            .data
             .into_iter()
             .filter(|franchise| franchise.team_common_name.to_uppercase() == name)
             .collect::<Vec<_>>()
@@ -159,11 +153,9 @@ impl Client {
         &self,
         team_place_name: &str,
     ) -> Result<Option<Franchise>, u16> {
-        let url = format!("{}/{}/franchise", self.stats_base_url, self.language);
-        let result = get::<FranchiseResponse>(url).await?;
+        let result = self.get_franchises().await?;
         let name = team_place_name.to_uppercase();
         Ok(result
-            .data
             .into_iter()
             .filter(|franchise| franchise.team_place_name.to_uppercase() == name)
             .collect::<Vec<_>>()
