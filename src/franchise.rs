@@ -1,6 +1,4 @@
-use crate::Client;
-
-use crate::http::get;
+use crate::{http::get, Client};
 
 use serde::{Deserialize, Serialize};
 
@@ -26,8 +24,6 @@ impl Client {
     /// # Example
     /// ```no_run
     /// use nhl_rs::ClientBuilder;
-    ///
-    /// const LANGUAGE_CODE: &str = "en";
     ///
     /// # #[tokio::main]
     /// # async fn main() -> Result<(), u16> {
