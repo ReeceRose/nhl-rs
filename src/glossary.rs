@@ -41,7 +41,6 @@ impl Client {
     /// ```
     pub async fn get_glossary(&self) -> Result<GlossaryResponse, u16> {
         let url = format!("{}/{}/glossary", self.stats_base_url, self.language);
-        println!("{}", url);
         get::<GlossaryResponse>(url).await
     }
 }
