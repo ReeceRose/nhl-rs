@@ -177,7 +177,7 @@ impl Client {
     /// # async fn main() -> Result<(), u16> {
     /// let client = ClientBuilder::new().build();
     ///
-    /// let response = client.get_active_countries().await?.unwrap();
+    /// let response = client.get_active_countries().await?;
     ///
     /// println!("There are currently {:?} active countries", response.len());
     ///
@@ -201,7 +201,7 @@ impl Client {
     /// # async fn main() -> Result<(), u16> {
     /// let client = ClientBuilder::new().build();
     ///
-    /// let response = client.get_inactive_countries().await?.unwrap();
+    /// let response = client.get_inactive_countries().await?;
     ///
     /// println!("There are currently {:?} inactive countries", response.len());
     ///
