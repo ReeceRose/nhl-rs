@@ -9,8 +9,8 @@ async fn main() -> Result<(), u16> {
         .build();
     let response = client.get_glossary().await?;
 
-    println!("Got {:?} glossary terms", response.total);
-    println!("First term {:?}", response.data.first().unwrap().definition);
+    println!("Got {:?} glossary terms", response.len());
+    println!("First term {:?}", response[0].definition);
 
     Ok(())
 }
