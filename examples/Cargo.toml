@@ -7,34 +7,23 @@ edition = "2021"
 nhl-rs = { path = "../" }
 tokio = { version = "1.33.0", features = ["full"] }
 
-[[bin]]
-name = "franchises"
-path = "src/franchises.rs"
-
 [[example]]
 name = "franchises"
 path = "src/franchises.rs"
-
-[[bin]]
-name = "glossary"
-path = "src/glossary.rs"
 
 [[example]]
 name = "glossary"
 path = "src/glossary.rs"
 
-[[bin]]
-name = "country"
-path = "src/country.rs"
-
 [[example]]
 name = "country"
 path = "src/country.rs"
 
-[[bin]]
-name = "alternative_language"
-path = "src/alternative_language.rs"
 
 [[example]]
 name = "alternative_language"
 path = "src/alternative_language.rs"
+
+[[example]]
+name = "ping"
+path = "src/ping.rs"

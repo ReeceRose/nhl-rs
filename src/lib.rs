@@ -6,3 +6,4 @@ mod country;
 mod franchise;
 mod glossary;
 pub(crate) mod http;
+mod ping;
