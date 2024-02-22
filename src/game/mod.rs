@@ -3,7 +3,7 @@ pub mod metadata;
 
 use crate::{http::get, Client};
 
-use crate::game::{
+pub use crate::game::{
     game::{Game, GameResponse},
     metadata::GameMetadataResponse,
 };

@@ -8,3 +8,4 @@ mod game;
 mod glossary;
 pub(crate) mod http;
 mod ping;
+mod season;
