@@ -19,7 +19,7 @@ async fn main() -> Result<(), u16> {
     println!("Glossary item with ID of 1315: {:?}", response);
 
     let response = client
-        .get_glossary_item_by_abbreviation("GR W")
+        .get_glossary_item_by_glossary_abbreviation("GR W")
         .await?
         .unwrap();
 

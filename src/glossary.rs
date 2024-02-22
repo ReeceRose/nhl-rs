@@ -22,7 +22,7 @@ pub struct GlossaryItem {
 }
 
 impl Client {
-    /// Retrieve a list of glossary terms.
+    /// Get a list of glossary terms.
     ///
     /// # Example
     /// ```no_run
@@ -48,7 +48,7 @@ impl Client {
         }
     }
 
-    /// Retrieve a glossary item by a given `glossary_id`.
+    /// Get a glossary item by a `id`.
     ///
     /// # Errors
     /// If the NHL API throws an error, then the corresponding HTTP error code is returned.
@@ -68,20 +68,17 @@ impl Client {
     /// Ok(())
     /// # }
     /// ```
-    pub async fn get_glossary_item_by_id(
-        &self,
-        glossary_id: i64,
-    ) -> Result<Option<GlossaryItem>, u16> {
+    pub async fn get_glossary_item_by_id(&self, id: i64) -> Result<Option<GlossaryItem>, u16> {
         let result = self.get_glossary().await?;
         Ok(result
             .into_iter()
-            .filter(|item| item.id == glossary_id)
+            .filter(|item| item.id == id)
             .collect::<Vec<_>>()
             .first()
             .cloned())
     }
 
-    /// Retrieve a glossary item by a given `glossary_abbreviation`.
+    /// Get a glossary item by a `glossary_abbreviation`.
     ///
     /// # Errors
     /// If the NHL API throws an error, then the corresponding HTTP error code is returned.
@@ -94,14 +91,14 @@ impl Client {
     /// # async fn main() -> Result<(), u16> {
     /// let client = ClientBuilder::new().build();
     ///
-    /// let response = client.get_glossary_item_by_abbreviation("GR W").await?.unwrap();
+    /// let response = client.get_glossary_item_by_glossary_abbreviation("GR W").await?.unwrap();
     ///
     /// println!("Glossary item {:?}", response);
     ///
     /// Ok(())
     /// # }
     /// ```
-    pub async fn get_glossary_item_by_abbreviation(
+    pub async fn get_glossary_item_by_glossary_abbreviation(
         &self,
         glossary_abbreviation: &str,
     ) -> Result<Option<GlossaryItem>, u16> {

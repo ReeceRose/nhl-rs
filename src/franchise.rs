@@ -19,7 +19,7 @@ pub struct Franchise {
 }
 
 impl Client {
-    /// Retrieves a list of NHL franchises.
+    /// Get a list of franchises.
     ///
     /// # Errors
     /// If the NHL API throws an error, then the corresponding HTTP error code is returned.
@@ -47,7 +47,7 @@ impl Client {
         }
     }
 
-    /// Retrieves a franchise by a given `franchise_id`.
+    /// Get a franchise by an `id`.
     ///
     /// # Errors
     /// If the NHL API throws an error, then the corresponding HTTP error code is returned.
@@ -63,17 +63,17 @@ impl Client {
     /// Ok(())
     /// # }
     /// ```
-    pub async fn get_franchise_by_id(&self, franchise_id: i64) -> Result<Option<Franchise>, u16> {
+    pub async fn get_franchise_by_id(&self, id: i64) -> Result<Option<Franchise>, u16> {
         let result = self.get_franchises().await?;
         Ok(result
             .into_iter()
-            .filter(|franchise| franchise.id == franchise_id)
+            .filter(|franchise| franchise.id == id)
             .collect::<Vec<_>>()
             .first()
             .cloned())
     }
 
-    /// Retrieves a franchise by a given `franchise_name`.
+    /// Get a franchise by a `full_name`.
     ///
     /// # Errors
     /// If the NHL API throws an error, then the corresponding HTTP error code is returned.
@@ -82,19 +82,19 @@ impl Client {
     /// # async fn main() -> Result<(), u16> {
     /// let client = ClientBuilder::new().build();
     ///
-    /// let response = client.get_franchise_by_name("St. Louis Eagles".to_string()).await?;
+    /// let response = client.get_franchise_by_full_name("St. Louis Eagles".to_string()).await?;
     ///
     /// println!("Franchise with the name of 'St. Louis': {:?}", response);
     ///
     /// Ok(())
     /// # }
     /// ```
-    pub async fn get_franchise_by_name(
+    pub async fn get_franchise_by_full_name(
         &self,
-        franchise_name: &str,
+        full_name: &str,
     ) -> Result<Option<Franchise>, u16> {
         let result = self.get_franchises().await?;
-        let name = franchise_name.to_uppercase();
+        let name = full_name.to_uppercase();
         Ok(result
             .into_iter()
             .filter(|franchise| franchise.full_name.to_uppercase() == name)
@@ -103,7 +103,7 @@ impl Client {
             .cloned())
     }
 
-    /// Retrieves a franchise by a given `team_common_name`.
+    /// Get a franchise by a `team_common_name`.
     ///
     /// # Errors
     /// If the NHL API throws an error, then the corresponding HTTP error code is returned.
@@ -112,14 +112,14 @@ impl Client {
     /// # async fn main() -> Result<(), u16> {
     /// let client = ClientBuilder::new().build();
     ///
-    /// let response = client.get_franchise_by_common_name("Eagles".to_string()).await?;
+    /// let response = client.get_franchise_by_team_common_name("Eagles".to_string()).await?;
     ///
     /// println!("Franchise with the common name of 'Eagles': {:?}", response);
     ///
     /// Ok(())
     /// # }
     /// ```
-    pub async fn get_franchise_by_common_name(
+    pub async fn get_franchise_by_team_common_name(
         &self,
         team_common_name: &str,
     ) -> Result<Option<Franchise>, u16> {
@@ -133,7 +133,7 @@ impl Client {
             .cloned())
     }
 
-    /// Retrieves a franchise by a given `team_place_name`.
+    /// Get a franchise by a `team_place_name`.
     ///
     /// # Errors
     /// If the NHL API throws an error, then the corresponding HTTP error code is returned.
@@ -142,14 +142,14 @@ impl Client {
     /// # async fn main() -> Result<(), u16> {
     /// let client = ClientBuilder::new().build();
     ///
-    /// let response = client.get_franchise_by_place_name("Hamilton".to_string()).await?;
+    /// let response = client.get_franchise_by_team_place_name("Hamilton".to_string()).await?;
     ///
     /// println!("Franchise with the place name of 'Hamilton': {:?}", response);
     ///
     /// Ok(())
     /// # }
     /// ```
-    pub async fn get_franchise_by_place_name(
+    pub async fn get_franchise_by_team_place_name(
         &self,
         team_place_name: &str,
     ) -> Result<Option<Franchise>, u16> {

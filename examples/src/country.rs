@@ -18,7 +18,10 @@ async fn main() -> Result<(), u16> {
 
     println!("Canada thumbnail URL {:?}", canada.thumbnail_url);
 
-    let usa = client.get_country_by_name("united states").await?.unwrap();
+    let usa = client
+        .get_country_by_country_name("united states")
+        .await?
+        .unwrap();
 
     println!("USA thumbnail URL {:?}", usa.thumbnail_url);
 
