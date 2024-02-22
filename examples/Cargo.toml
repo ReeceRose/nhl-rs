@@ -27,3 +27,7 @@ path = "src/alternative_language.rs"
 [[example]]
 name = "ping"
 path = "src/ping.rs"
+
+[[example]]
+name = "game_metadata"
+path = "src/game_metadata.rs"
