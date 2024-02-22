@@ -27,7 +27,7 @@ pub struct Country {
 }
 
 impl Client {
-    /// Retrieves a list of countries assoicated with the NHL.
+    /// Get a list of countries assoicated with the NHL.
     ///
     /// # Errors
     /// If the NHL API throws an error, then the corresponding HTTP error code is returned.
@@ -56,7 +56,7 @@ impl Client {
         }
     }
 
-    /// Retrieve a country by a given `country_id`.
+    /// Get a country by an `id`.
     ///
     /// # Errors
     /// If the NHL API throws an error, then the corresponding HTTP error code is returned.
@@ -76,18 +76,18 @@ impl Client {
     /// Ok(())
     /// # }
     /// ```
-    pub async fn get_country_by_id(&self, country_id: &str) -> Result<Option<Country>, u16> {
+    pub async fn get_country_by_id(&self, id: &str) -> Result<Option<Country>, u16> {
         let result = self.get_countries().await?;
-        let id = country_id.to_uppercase();
+        let country_id = id.to_uppercase();
         Ok(result
             .into_iter()
-            .filter(|country| country.id.to_uppercase() == id)
+            .filter(|country| country.id.to_uppercase() == country_id)
             .collect::<Vec<_>>()
             .first()
             .cloned())
     }
 
-    /// Retrieves a country by a given `country_name`.
+    /// Get a country by a `country_name`.
     ///
     /// # Errors
     /// If the NHL API throws an error, then the corresponding HTTP error code is returned.
@@ -100,14 +100,17 @@ impl Client {
     /// # async fn main() -> Result<(), u16> {
     /// let client = ClientBuilder::new().build();
     ///
-    /// let response = client.get_country_by_name("canada").await?.unwrap();
+    /// let response = client.get_country_by_country_name("canada").await?.unwrap();
     ///
     /// println!("Thumbnail URL {:?}", response.thumbnail_url);
     ///
     /// Ok(())
     /// # }
     /// ```
-    pub async fn get_country_by_name(&self, country_name: &str) -> Result<Option<Country>, u16> {
+    pub async fn get_country_by_country_name(
+        &self,
+        country_name: &str,
+    ) -> Result<Option<Country>, u16> {
         let result = self.get_countries().await?;
         let name = country_name.to_uppercase();
         Ok(result
@@ -118,7 +121,7 @@ impl Client {
             .cloned())
     }
 
-    /// Retrieve a country by a given `country_ioc_code`.
+    /// Get a country by a `country_ioc_code`.
     ///
     /// # Errors
     /// If the NHL API throws error, then the corresponding HTTP error code is returned.
@@ -131,7 +134,7 @@ impl Client {
     /// # async fn main() -> Result<(), u16> {
     /// let client = ClientBuilder::new().build();
     ///
-    /// let response = client.get_country_by_id("RSA").await?.unwrap();
+    /// let response = client.get_country_by_ioc_code("RSA").await?.unwrap();
     ///
     /// println!("Thumbnail URL {:?}", response.thumbnail_url);
     ///
@@ -160,7 +163,7 @@ impl Client {
             .collect::<Vec<_>>())
     }
 
-    /// Retrieve all active countries.
+    /// Get all active countries.
     ///
     /// # Errors
     /// If the NHL API throws error, then the corresponding HTTP error code is returned.
@@ -184,7 +187,7 @@ impl Client {
         self.get_counties_by_activity(1).await
     }
 
-    /// Retrieve all inactive countries.
+    /// Get all inactive countries.
     ///
     /// # Errors
     /// If the NHL API throws error, then the corresponding HTTP error code is returned.

@@ -18,7 +18,7 @@ async fn main() -> Result<(), u16> {
     println!("Franchise with the ID of 1: {:?}", response);
 
     let response = client
-        .get_franchise_by_place_name("Hamilton")
+        .get_franchise_by_team_place_name("Hamilton")
         .await?
         .unwrap();
     println!(
