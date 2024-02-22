@@ -7,6 +7,7 @@ The unofficial NHL Rust SDK for the new Edge API.
 - /franchise
 - /glossary
 - /ping
+- /game/meta
 
 ## Supported Edge Endpoints
 
