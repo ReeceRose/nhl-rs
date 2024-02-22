@@ -31,3 +31,7 @@ path = "src/ping.rs"
 [[example]]
 name = "game_metadata"
 path = "src/game_metadata.rs"
+
+[[example]]
+name = "games"
+path = "src/games.rs"
